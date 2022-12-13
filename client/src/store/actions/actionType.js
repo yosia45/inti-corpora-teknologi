@@ -1,0 +1,6 @@
+export const baseURL = "https://jsonplaceholder.typicode.com/posts"
+export const FETCH_DATA = "data/fetchData"
+export const FETCH_DATA_BY_ID = "data/fetchDataById"
+export const ADD_DATA = "data/addData"
+export const EDIT_DATA = "data/editData"
+export const DELETE_DATA = "data/deleteData"
