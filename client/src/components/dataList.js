@@ -7,6 +7,8 @@ import {
   Input,
   Select,
   InputNumber,
+  Col,
+  Spin,
 } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
@@ -85,8 +87,8 @@ export default function DataList() {
   };
   const editDataHandler = (values) => {
     console.log(values, "values dari EditDataHandler");
-    console.log(bodyToEdit, "bodyToEdit dari editDataHandler")
-    console.log(editedData, "editedData dari editDataHandler")
+    console.log(bodyToEdit, "bodyToEdit dari editDataHandler");
+    console.log(editedData, "editedData dari editDataHandler");
     handleEditOk();
     // console.log("masuk editdataHandler");
     dispatch(editData(bodyToEdit, values.id))
@@ -182,8 +184,16 @@ export default function DataList() {
         <Layout>
           <Head />
           {loading ? (
-            <div style={{ height: "100%" }}>
-              <p>Loading...</p>
+            <div
+              style={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Spin />
             </div>
           ) : (
             <Content
@@ -219,13 +229,7 @@ export default function DataList() {
                   style={{ width: "100%" }}
                   pagination={{ position: ["bottomLeft"] }}
                 >
-                  <Column
-                    title="No"
-                    dataIndex="id"
-                    key="id"
-                    width="1%"
-                    responsive={["sm"]}
-                  />
+                  <Column title="No" dataIndex="id" key="id" width="1%" />
                   <Column
                     title="Title"
                     dataIndex="title"

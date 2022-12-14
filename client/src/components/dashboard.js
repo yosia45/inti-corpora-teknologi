@@ -47,7 +47,17 @@ export default function Dashboard() {
           <Content>
             <Head />
             {loading ? (
-              <Spin />
+              <div
+                style={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Spin />
+              </div>
             ) : (
               <div>
                 <Col xl={24} lg={18} md={12} sm={8}>
