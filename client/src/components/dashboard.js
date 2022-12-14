@@ -50,18 +50,24 @@ export default function Dashboard() {
               <Spin />
             ) : (
               <div>
-                <Col xs={20} sm={21} md={22} lg={23} xl={24}>
+                <Col xl={24} lg={18} md={12} sm={8}>
                   <Row>
-                    <Col span={12}>
-                    <Divider orientation="center">Bar Chart of Total Post</Divider>
-                    <BarChart data={dataToRender(results)} />
+                    <Col xl={12} sm={4}>
+                      <Divider orientation="center">
+                        Bar Chart of Total Post
+                      </Divider>
+                      <BarChart data={dataToRender(results)} />
                     </Col>
-                    <Col span={12}>
-                    <Divider orientation="center">Pie Chart of Total Post</Divider>
-                    <PieChart data={dataToRender(results)} />
+                    <Col xl={12} sm={4}>
+                      <Divider orientation="center">
+                        Pie Chart of Total Post
+                      </Divider>
+                      <PieChart data={dataToRender(results)} />
                     </Col>
                   </Row>
-                  <Divider orientation="center">Line Chart of Total Post</Divider>
+                  <Divider orientation="center">
+                    Line Chart of Total Post
+                  </Divider>
                   <LineChart data={dataToRender(results)} />
                 </Col>
               </div>

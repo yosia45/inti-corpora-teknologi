@@ -83,11 +83,13 @@ export default function DataList() {
   const handleEditCancel = () => {
     setIsModalEditOpen(false);
   };
-  const editDataHandler = (editedData) => {
-    console.log(editedData, "dari handler");
+  const editDataHandler = (values) => {
+    console.log(values, "values dari EditDataHandler");
+    console.log(bodyToEdit, "bodyToEdit dari editDataHandler")
+    console.log(editedData, "editedData dari editDataHandler")
     handleEditOk();
     // console.log("masuk editdataHandler");
-    dispatch(editData(bodyToEdit, editedData.id))
+    dispatch(editData(bodyToEdit, values.id))
       .then((data) => {
         Swal.fire(`Success Edit Data`, "", "success");
         navigate("/data");
@@ -114,8 +116,7 @@ export default function DataList() {
   };
 
   const onChangeId = (values) => {
-    console.log(values, "id");
-    setNewData({ ...newData, id: values });
+    setEditedData({ ...editedData, id: values });
   };
 
   const onChange = (e) => {
@@ -125,7 +126,6 @@ export default function DataList() {
 
   const onChangeEdit = (e) => {
     const { value, name } = e.target;
-    // console.log(value, name);
     setEditedData({ ...editedData, [name]: value });
   };
 
@@ -330,6 +330,13 @@ export default function DataList() {
                     layout="vertical"
                   >
                     <Form.Item
+                      label="Id"
+                      name="id"
+                      rules={[{ required: true, message: "id is Required" }]}
+                    >
+                      <InputNumber disabled={true} />
+                    </Form.Item>
+                    <Form.Item
                       label="Title"
                       name="title"
                       rules={[{ required: true, message: "Title is Required" }]}
@@ -361,7 +368,7 @@ export default function DataList() {
                 <Modal
                   title="Add Data"
                   open={isModalAddOpen}
-                  onCancel={handleEditCancel}
+                  onCancel={handleAddCancel}
                   okText="Add"
                   onOk={() => {
                     form
